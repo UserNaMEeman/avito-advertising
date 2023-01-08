@@ -6,5 +6,6 @@ description varchar(1000),
 url1 varchar(255),
 url2 varchar(255),
 url3 varchar(255),
-price int not null 
+price money,
+date_create timestamp default CURRENT_TIMESTAMP
 );
