@@ -30,6 +30,7 @@ func (prod *CreateProduct) CreateProductDB(ctx context.Context, product entity.P
 	if err != nil {
 		return 0, err
 	}
+	defer id.Close()
 	for id.Next() {
 		err = id.Scan(&n)
 		if err != nil {

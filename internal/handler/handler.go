@@ -17,5 +17,6 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes() *chi.Mux {
 	router := chi.NewRouter()
 	router.Post("/newproduct", h.CreateProduct)
+	router.Post("/getproducts", h.ReturnProducts)
 	return router
 }

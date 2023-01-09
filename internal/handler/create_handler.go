@@ -2,17 +2,20 @@ package handler
 
 import (
 	"advertising/entity"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 func (h Handler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	product := entity.Product{}
-	ctx := r.Context()
+	ctx, cancel := context.WithTimeout(r.Context(), 70*time.Second)
+	defer cancel()
 	body := r.Body
 	defer r.Body.Close()
 	data, err := io.ReadAll(body)

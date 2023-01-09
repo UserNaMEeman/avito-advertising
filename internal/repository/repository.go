@@ -10,7 +10,7 @@ import (
 var tableProduct string = "products"
 
 type GetList interface {
-	GetProducts(context.Context, entity.SortProductDB) ([]entity.Product, error)
+	GetProductsDB(context.Context, entity.SortProductDB, int, int) ([]entity.ResponseList, error)
 }
 
 type GetAdt interface{}
@@ -28,6 +28,6 @@ type Repository struct {
 func NewProductPostgres(db *sqlx.DB) *Repository {
 	return &Repository{
 		CreateAdt: NewCreateProduct(db),
-		// GetList:   NewProductListDB(db),
+		GetList:   NewProductListDB(db),
 	}
 }
