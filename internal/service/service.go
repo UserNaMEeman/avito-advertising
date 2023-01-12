@@ -7,13 +7,15 @@ import (
 )
 
 type GetList interface {
-	GetProducts(context.Context, entity.SortProduct) ([][]entity.ResponseList, error)
+	GetProducts(ctx context.Context, sortProd entity.SortProduct) ([][]entity.ResponseList, error)
 }
 
-type GetAdt interface{}
+type GetAdt interface {
+	GetProduct(ctx context.Context, id int, fields entity.ResponseFileds) (entity.Product, error)
+}
 
 type CreateAdt interface {
-	CreateProduct(context.Context, entity.Product) (int, error)
+	CreateProduct(ctx context.Context, product entity.Product) (int, error)
 }
 
 type Service struct {
@@ -26,5 +28,6 @@ func NewServices(repos *repository.Repository) *Service {
 	return &Service{
 		GetList:   NewProductList(repos.GetList),
 		CreateAdt: NewCreateProduct(repos.CreateAdt),
+		GetAdt:    NewProduct(repos.GetAdt),
 	}
 }

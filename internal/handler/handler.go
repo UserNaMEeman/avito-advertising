@@ -18,5 +18,6 @@ func (h *Handler) InitRoutes() *chi.Mux {
 	router := chi.NewRouter()
 	router.Post("/newproduct", h.CreateProduct)
 	router.Post("/getproducts", h.ReturnProducts)
+	router.Post("/getproduct", h.GetProduct)
 	return router
 }

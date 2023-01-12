@@ -26,3 +26,12 @@ type ResponseList struct {
 	URL1  string
 	Price string
 }
+
+type ResponseFileds struct {
+	Descr bool `json:"descr,omitempty"`
+	Photo bool `json:"photo,omitempty"`
+}
+
+type ProductID struct {
+	ID string `json:"id"`
+}
