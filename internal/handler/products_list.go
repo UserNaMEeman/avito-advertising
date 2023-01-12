@@ -43,8 +43,14 @@ func (h Handler) ReturnProducts(w http.ResponseWriter, r *http.Request) {
 		page := "page " + strconv.Itoa(i+1) + ":\n"
 		w.Write([]byte(page))
 		for _, product := range products {
-			report := "		" + product.Title + "	" + product.URL1 + " " + product.Price + "\n"
-			w.Write([]byte(report))
+			data, err := json.Marshal(product)
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				fmt.Println(err)
+				return
+			}
+			// report := "		" + product.Title + "	" + product.URL1 + " " + product.Price + "\n"
+			w.Write([]byte(data))
 		}
 	}
 }
