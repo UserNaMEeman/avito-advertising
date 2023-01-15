@@ -1,3 +1,4 @@
+CREATE DATABASE prod_DB;
 CREATE TABLE products
 (
 id serial not null unique,
