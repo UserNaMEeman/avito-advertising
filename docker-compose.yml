@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_PASSWORD={$PASSWORD}
     networks:
       general:
         ipv4_address: 172.20.2.20
